@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XYZ Funding Monitor — Trade[XYZ] 资金费率监控</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">trade<span class="bracket">[XYZ]</span></span>
+      <span class="brand-name">Funding Monitor</span>
+    </a>
+    <div class="topbar-meta">
+      <a class="tg-link" href="https://t.me/tradexyz_chn" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zM17.94 8.18l-1.96 9.24c-.147.66-.537.82-1.087.51l-3-2.21-1.45 1.4c-.16.16-.295.295-.605.295l.215-3.05 5.56-5.02c.24-.215-.05-.335-.375-.12l-6.875 4.33-2.96-.925c-.645-.2-.655-.645.135-.955l11.57-4.46c.535-.195 1.005.13.83.96z"/></svg>
+        [XYZ] 美股交流群
+      </a>
+      <div class="status" id="status">
+        <span class="dot" id="statusDot"></span>
+        <span id="statusText">加载中...</span>
+      </div>
+      <button class="btn-refresh" id="refreshBtn">刷新</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="summary-cards" id="summaryCards"></section>
+
+  <nav class="category-tabs" id="categoryTabs"></nav>
+
+  <section class="controls">
+    <input type="text" id="searchInput" placeholder="搜索 ticker，如 NVDA / GOLD / TSLA ..." class="search-input">
+    <div class="legend">
+      <span class="legend-item"><span class="swatch high-pos"></span>极高正费率</span>
+      <span class="legend-item"><span class="swatch pos"></span>正费率</span>
+      <span class="legend-item"><span class="swatch neg"></span>负费率</span>
+      <span class="legend-item"><span class="swatch high-neg"></span>极高负费率</span>
+    </div>
+  </section>
+
+  <section class="table-wrap">
+    <table id="fundingTable">
+      <thead>
+        <tr>
+          <th data-key="symbol">Ticker</th>
+          <th data-key="category">分类</th>
+          <th data-key="markPx" class="num">标记价格</th>
+          <th data-key="funding" class="num sorted desc">资金费率 (1h)</th>
+          <th data-key="annualized" class="num">年化费率</th>
+          <th data-key="openInterestUsd" class="num">未平仓量</th>
+          <th data-key="dayNtlVlm" class="num">24h 成交额 (USD)</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+        <tr><td colspan="8" class="loading-row">正在加载 Hyperliquid xyz dex 数据...</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <p class="footnote">
+    数据来源: Hyperliquid Public API（dex = <code>xyz</code> / Trade[XYZ]）。资金费率为每小时费率，年化按 24 × 365 估算，仅供参考，不构成投资建议。点击任意 ticker 可查看详情与历史资金费率走势。
+  </p>
+
+  <footer class="site-footer">
+    <div class="referral-banner">
+      通过专属链接注册 <strong>Hyperliquid</strong>，即可享受 <strong>4% 交易手续费减免</strong>
+      <br>
+      <a href="https://app.hyperliquid.xyz/join/TRADEZYX" target="_blank" rel="noopener">立即注册 →</a>
+    </div>
+    <div class="social-links">
+      <a class="social-link" href="https://t.me/tradexyz_chn" target="_blank" rel="noopener" aria-label="Telegram 群组">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zM17.94 8.18l-1.96 9.24c-.147.66-.537.82-1.087.51l-3-2.21-1.45 1.4c-.16.16-.295.295-.605.295l.215-3.05 5.56-5.02c.24-.215-.05-.335-.375-.12l-6.875 4.33-2.96-.925c-.645-.2-.655-.645.135-.955l11.57-4.46c.535-.195 1.005.13.83.96z"/></svg>
+      </a>
+      <a class="social-link" href="https://x.com/dongdongRobin" target="_blank" rel="noopener" aria-label="X (Twitter)">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+    </div>
+    <div class="footer-copyright">XYZ Funding Monitor &middot; 数据来源 Hyperliquid Public API &middot; 非官方第三方工具</div>
+  </footer>
+</main>
+
+<script src="categories.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

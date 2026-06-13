@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ticker Detail — Trade[XYZ] Funding Monitor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">trade<span class="bracket">[XYZ]</span></span>
+      <span class="brand-name">Funding Monitor</span>
+    </a>
+    <div class="topbar-meta">
+      <a class="tg-link" href="https://t.me/tradexyz_chn" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zM17.94 8.18l-1.96 9.24c-.147.66-.537.82-1.087.51l-3-2.21-1.45 1.4c-.16.16-.295.295-.605.295l.215-3.05 5.56-5.02c.24-.215-.05-.335-.375-.12l-6.875 4.33-2.96-.925c-.645-.2-.655-.645.135-.955l11.57-4.46c.535-.195 1.005.13.83.96z"/></svg>
+        [XYZ] 美股交流群
+      </a>
+      <div class="status" id="status">
+        <span class="dot" id="statusDot"></span>
+        <span id="statusText">加载中...</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <a href="index.html" class="back-link">&larr; 返回全部 Ticker</a>
+
+  <div class="detail-header">
+    <h1 id="symbolTitle">--</h1>
+    <span class="cat-pill" id="categoryPill">--</span>
+    <a class="detail-link" id="tradeLink" href="#" target="_blank" rel="noopener">去交易 ↗</a>
+  </div>
+
+  <section class="summary-cards" id="statCards"></section>
+
+  <div class="range-tabs" id="rangeTabs">
+    <button class="range-tab" data-range="24h">24 小时</button>
+    <button class="range-tab active" data-range="7d">7 天</button>
+    <button class="range-tab" data-range="30d">30 天</button>
+  </div>
+
+  <section class="chart-card">
+    <canvas id="fundingChart" height="130"></canvas>
+  </section>
+
+  <p class="footnote">
+    数据来源: Hyperliquid Public API（dex = <code>xyz</code> / Trade[XYZ]）。资金费率为每小时费率，年化按 24 × 365 估算，仅供参考，不构成投资建议。
+  </p>
+
+  <footer class="site-footer">
+    <div class="referral-banner">
+      通过专属链接注册 <strong>Hyperliquid</strong>，即可享受 <strong>4% 交易手续费减免</strong>
+      <br>
+      <a href="https://app.hyperliquid.xyz/join/TRADEZYX" target="_blank" rel="noopener">立即注册 →</a>
+    </div>
+    <div class="social-links">
+      <a class="social-link" href="https://t.me/tradexyz_chn" target="_blank" rel="noopener" aria-label="Telegram 群组">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zM17.94 8.18l-1.96 9.24c-.147.66-.537.82-1.087.51l-3-2.21-1.45 1.4c-.16.16-.295.295-.605.295l.215-3.05 5.56-5.02c.24-.215-.05-.335-.375-.12l-6.875 4.33-2.96-.925c-.645-.2-.655-.645.135-.955l11.57-4.46c.535-.195 1.005.13.83.96z"/></svg>
+      </a>
+      <a class="social-link" href="https://x.com/dongdongRobin" target="_blank" rel="noopener" aria-label="X (Twitter)">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+    </div>
+    <div class="footer-copyright">XYZ Funding Monitor &middot; 数据来源 Hyperliquid Public API &middot; 非官方第三方工具</div>
+  </footer>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="categories.js"></script>
+<script src="detail.js"></script>
+</body>
+</html>
