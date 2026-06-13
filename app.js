@@ -129,12 +129,12 @@ function renderSummary() {
       <div class="card-sub">Trade[XYZ] (dex: ${DEX})</div>
     </div>
     <div class="card">
-      <div class="card-label">最高年化费率</div>
+      <div class="card-label">最高正费率</div>
       <div class="card-value" style="color: var(--green)">${fmtPct(highest.annualized, 2)}</div>
       <div class="card-sub">${highest.symbol}</div>
     </div>
     <div class="card">
-      <div class="card-label">最低年化费率</div>
+      <div class="card-label">最高负费率</div>
       <div class="card-value" style="color: var(--red)">${fmtPct(lowest.annualized, 2)}</div>
       <div class="card-sub">${lowest.symbol}</div>
     </div>
